@@ -6,6 +6,7 @@ const { findUserSchema } = require("../middlewares/joiSchema/findUserSchema");
 const { updateSubscriptionSchema } = require("../middlewares/joiSchema/updateSubscriptionSchema");
 const { validateBody } = require("../middlewares/validateSchema/validateBody");
 const { auth } = require("../middlewares/validateSchema/auth");
+const { upload } = require("../middlewares/validateSchema/upload");
 
 module.exports = {
     addContactSchema,
@@ -16,4 +17,5 @@ module.exports = {
     updateSubscriptionSchema,
     validateBody,
     auth,
+    upload,
   };
