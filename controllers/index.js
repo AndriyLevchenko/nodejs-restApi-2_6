@@ -7,6 +7,7 @@ const { updateStatusContactService } = require("./contacts/updateStatusContactSe
 const { current } = require("./user/current");
 const { logout } = require("./user/logout");
 const { updateSubscription } = require("./user/updateSubscription");
+const { uploadImageAvatar } = require("./user/uploadImageAvatar");
 const { register } = require("./auth/register");
 const { login } = require("./auth/login");
 
@@ -20,6 +21,7 @@ module.exports = {
     current,
     logout,
     updateSubscription,
+    uploadImageAvatar,
     register,
     login,
 };

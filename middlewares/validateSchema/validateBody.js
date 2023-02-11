@@ -1,4 +1,3 @@
-const jwt = require("jsonwebtoken");
 
 const HttpError = require("../../helpers/HttpError.js");
 
