@@ -8,6 +8,8 @@ const { current } = require("./user/current");
 const { logout } = require("./user/logout");
 const { updateSubscription } = require("./user/updateSubscription");
 const { uploadImageAvatar } = require("./user/uploadImageAvatar");
+const { verifyEmail } = require("./user/verifyEmail");
+const { resendVerifyEmail } = require("./user/resendVerifyEmail");
 const { register } = require("./auth/register");
 const { login } = require("./auth/login");
 
@@ -22,6 +24,8 @@ module.exports = {
     logout,
     updateSubscription,
     uploadImageAvatar,
+    verifyEmail,
+    resendVerifyEmail,
     register,
     login,
 };

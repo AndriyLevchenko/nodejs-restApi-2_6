@@ -7,6 +7,8 @@ const {
     logout,
     updateSubscription,
     uploadImageAvatar,
+    verifyEmail,
+    resendVerifyEmail,
 } = require("../controllers/index");
 
 const { updateSubscriptionSchema, auth, upload } = require("../middlewares/index");
@@ -29,5 +31,8 @@ userRouter.patch(
     upload.single("avatar"),
     tryCatchWrapper(uploadImageAvatar)
 );
+
+userRouter.get("/verify/:verificationToken", tryCatchWrapper(verifyEmail));
+userRouter.post("/verify", tryCatchWrapper(resendVerifyEmail));
 
 module.exports = {userRouter};
