@@ -1,4 +1,4 @@
-const {findUser, findAndUpdate} = require("../../services/index");
+const {findUser} = require("../../services/index");
 const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
@@ -17,6 +17,12 @@ async function login(req, res, next) {
         throw new HttpError(401, "Email or password is wrong");
     }
 
+    if (!isUserValid.verified) {
+        throw new HttpError(
+          401, "email is not verified. Please check your mail box"
+        );
+    }
+
     const isPasswordValid = await bcrypt.compare(password, isUserValid.password);
 
     if (!isPasswordValid) {
@@ -27,17 +33,10 @@ async function login(req, res, next) {
 
     const token = jwt.sign(payload, JWT_SECRET);
     
-    const updatedUser = await findAndUpdate(
-        isUserValid._id,
-        { token: token },
-        { new: true }
-    );
-
-    res.json({
-        token: updatedUser.token,
+    return res.json({
+        token,
         user: {
-          email: isUserValid.email,
-          subscription: isUserValid.subscription,
+          email
         },
     });
 }
